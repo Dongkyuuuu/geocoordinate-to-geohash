@@ -1,9 +1,16 @@
 import { BASE32, BITS } from "./constants";
 
-export function geocoordinateToGeohash(
-  latitude: number,
-  longitude: number
-): string {
+type GeohashToGeocoordinateOptions = {
+  latitude: number;
+  longitude: number;
+  precision?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12; // check, https://docs.quadrant.io/quadrant-geohash-algorithm
+};
+
+export function geocoordinateToGeohash({
+  latitude,
+  longitude,
+  precision = 6,
+}: GeohashToGeocoordinateOptions): string {
   let isEven = true;
   let latMin = -90,
     latMax = 90;
@@ -13,7 +20,7 @@ export function geocoordinateToGeohash(
   let ch = 0;
   let geohash = "";
 
-  while (geohash.length < 12) {
+  while (geohash.length < precision) {
     if (isEven) {
       const lonMid = (lonMin + lonMax) / 2;
       if (longitude > lonMid) {
