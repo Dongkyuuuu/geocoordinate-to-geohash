@@ -14,6 +14,7 @@ $ yarn add geocoordinate-to-geohash
 import { geocoordinateToGeohash } from "geocoordinate-to-geohash";
 const latitude = 37.56616;
 const longitude = 126.978356;
+const precision = 5;
 const geohash = geocoordinateToGeohash({
   latitude,
   longitude,
@@ -25,6 +26,8 @@ console.log(geohash);
 
 ### Precision
 
-the maximum level of geohash precision is 12 and it represents a tile of 3.7 cm \* 1.9 cm. So, finding a location can be very efficient with Geohash.
+the maximum level of geohash precision is 12 and it represents a tile of 3.7 cm \* 1.9 cm.
+finding your location can be very efficient and some what precise with Geohash.
 
-More detail, check this [geohash-algorithm](https://docs.quadrant.io/quadrant-geohash-algorithm)
+In depth understanding of this algorithm,
+please check [geohash-algorithm](https://docs.quadrant.io/quadrant-geohash-algorithm)
